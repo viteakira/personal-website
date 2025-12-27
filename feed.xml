@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>viteakira</title>
+    <link>https://viteakira.github.io/</link>
+    <description>CTF writeups, project logs, and security research by viteakira</description>
+    <language>en-us</language>
+    <atom:link href="https://viteakira.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Jan 2025 00:00:00 +0000</lastBuildDate>
+    
+    <!-- Add your posts here as you create them -->
+    <!-- Example item:
+    <item>
+      <title>Post Title</title>
+      <link>https://viteakira.github.io/posts/2025-01-15-post-title.html</link>
+      <description>Post description or excerpt</description>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 +0000</pubDate>
+    </item>
+    -->
+  </channel>
+</rss>
+

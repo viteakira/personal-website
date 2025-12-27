@@ -12,6 +12,10 @@
     "Segoe UI", sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--ink-black);
   color: var(--dim-white);
@@ -37,6 +41,12 @@ h3,
   text-transform: lowercase;
 }
 
+h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  color: var(--slate-white);
+}
+
 header {
   text-align: center;
   margin-bottom: 2rem;
@@ -52,6 +62,18 @@ header {
   overflow-x: auto;
   white-space: pre;
   max-width: 100%;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  transition: text-shadow 0.3s ease, filter 0.3s ease;
+  cursor: default;
+}
+
+.ascii-logo:hover {
+  text-shadow: 0 0 10px var(--frost-blue), 0 0 20px var(--frost-blue),
+    0 0 30px rgba(213, 230, 255, 0.5);
+  filter: brightness(1.1);
 }
 
 .nav-links,
@@ -71,7 +93,19 @@ header {
   transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-a:hover {
+/* Content links in main */
+main a {
+  color: var(--slate-white);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.nav-links a:hover,
+#ctf-logs-list a:hover,
+.ctf-logs-list a:hover,
+#posts-list a:hover,
+#projects-list a:hover,
+main a:hover {
   color: var(--frost-blue);
   text-decoration: underline;
   text-shadow: 0 0 8px var(--frost-blue);
@@ -93,7 +127,7 @@ footer {
   color: var(--ghost-grey);
   text-decoration: none;
   font-size: 0.9rem;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
+  transition: text-shadow 0.2s ease;
 }
 
 .footer-links a:hover {
@@ -106,34 +140,106 @@ footer {
   margin: 0;
 }
 
-/* Devlogs */
-.devlog-day {
-  margin-bottom: 2.5rem;
-}
-
-.devlog-day h3 {
-  color: var(--frost-blue);
-  margin-bottom: 1rem;
-  font-size: 1rem;
-}
-
-.devlog-entry {
-  display: flex;
-  gap: 0.8rem;
-  margin-bottom: 1rem;
-  line-height: 1.6;
-}
-
-.devlog-index {
-  color: var(--ghost-grey);
+.status {
+  color: var(--slate-white);
   font-family: var(--font-mono);
-  flex-shrink: 0;
 }
 
-.devlog-content {
-  color: var(--dim-white);
-  margin: 0;
-  flex: 1;
+.status::after {
+  content: "_";
+  color: var(--frost-blue);
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+code {
+  background-color: var(--hairline);
+  color: var(--frost-blue);
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+}
+
+pre {
+  background-color: var(--hairline);
+  color: var(--slate-white);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  border-left: 2px solid var(--frost-blue);
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+/* Basic syntax highlighting */
+code .keyword,
+pre .keyword {
+  color: var(--frost-blue);
+  font-weight: 600;
+}
+
+code .string,
+pre .string {
+  color: #a8d5ba;
+}
+
+code .comment,
+pre .comment {
+  color: var(--ghost-grey);
+  font-style: italic;
+}
+
+code .function,
+pre .function {
+  color: #d4a5d4;
+}
+
+code .number,
+pre .number {
+  color: #f4a261;
+}
+
+#ctf-logs-list,
+.ctf-logs-list,
+#posts-list,
+#projects-list {
+  margin-top: 1.5rem;
+}
+
+#ctf-logs-list a,
+.ctf-logs-list a,
+#posts-list a,
+#projects-list a {
+  display: block;
+  color: var(--slate-white);
+  text-decoration: none;
+  margin-bottom: 0.8rem;
+  padding: 0.5rem 0;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+#ctf-logs-list a:hover,
+.ctf-logs-list a:hover,
+#posts-list a:hover,
+#projects-list a:hover {
+  color: var(--frost-blue);
+  text-shadow: 0 0 8px var(--frost-blue);
 }
 
 @media (min-width: 768px) {
@@ -161,14 +267,6 @@ footer {
   main p {
     font-size: 1.1rem;
     line-height: 1.5;
-  }
-
-  .devlog-day h3 {
-    font-size: 1.1rem;
-  }
-
-  .devlog-entry {
-    gap: 1rem;
   }
 }
 
@@ -209,13 +307,5 @@ footer {
 
   .footer-text {
     font-size: 0.9rem;
-  }
-
-  .devlog-day h3 {
-    font-size: 1.2rem;
-  }
-
-  .devlog-entry {
-    gap: 1.2rem;
   }
 }
